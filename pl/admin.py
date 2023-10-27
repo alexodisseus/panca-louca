@@ -8,7 +8,7 @@ from flask import Blueprint, render_template, current_app , request , session, r
 admin = Blueprint('admin' , __name__ , url_prefix='/')
 
 
-
+#usado para administrar os usuarios do sistema
 @admin.route('/', methods = ['GET','POST'])
 def index():
 	"""

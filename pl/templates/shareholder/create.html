@@ -10,7 +10,7 @@
 
 <div class="container">
     <h2>Formulário Bootstrap</h2>
-    <form>
+    <form action="./create" method="POST">
         <ul class="nav nav-tabs" id="myTabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#personalTab">Dados Pessoais</a>
@@ -65,7 +65,6 @@
             </div>
             <div class="tab-pane" id="accountTab">
                 <div class="form-group">
-                    
                     <label for="accounts">Conta 1:</label>
                     <input type="text" class="form-control" id="accounts" name="accounts">
                 </div>
@@ -73,9 +72,6 @@
                     <label for="account2">Conta 2:</label>
                     <input type="text" class="form-control" id="account2" name="account2">
                 </div>
-                <a href="{{url_for('shareholder.index')}}">
-                      sldnsdvlsnln
-                    </a>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>

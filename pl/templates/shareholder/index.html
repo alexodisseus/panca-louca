@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet"
+                  href="{{url_for('static', filename='index.css')}}">
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>Bem vindo ao cadastro de cotistas</h2>
+    
+</div>
+{% endblock %}
