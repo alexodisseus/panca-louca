@@ -42,6 +42,8 @@ class User(SQLModel, table=True):
 	"""docstring for User  -  tabela para cotistas"""
 	id: Optional[int] = Field(default=None, primary_key=True)
 	name:str
+	cpf:str
+	email:str
 	birth:str
 	telephone:str
 	cell:str
