@@ -32,11 +32,9 @@ def create():
 	"""
 
 	if request.method == 'POST':
-		# Para obter todos os parâmetros da solicitação (GET, POST, etc.):
+
 		params = request.args.to_dict()
-		# Para obter apenas os parâmetros de um método POST:
 		post_params = request.form.to_dict()
-		# Para obter os parâmetros da URL (GET) e do corpo da solicitação (POST):
 		all_params = {**params, **post_params}
 		
 		print('aqui')
