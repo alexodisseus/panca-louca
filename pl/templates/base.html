@@ -30,17 +30,19 @@
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#home">Home</a>
+        <!-- trocar por essa url 'painel.index'
+        -->
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#painel-de-controle">Painel de Controle</a>
+        <a class="nav-link" href="{{url_for('admin.index')}}">Painel de Controle</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="cotistasDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cotistas
         </a>
         <div class="dropdown-menu" aria-labelledby="cotistasDropdown">
-          <a class="dropdown-item" href="#listar-cotistas">Listar</a>
-          <a class="dropdown-item" href="#criar-cotistas">Criar</a>
+          <a class="dropdown-item" href="{{url_for('shareholder.index')}}">Listar</a>
+          <a class="dropdown-item" href="{{url_for('shareholder.create')}}">Criar</a>
         </div>
       </li>
       <li class="nav-item">

@@ -88,6 +88,26 @@ SQLModel.metadata.create_all(engine)
 
 
 
+def create_shareholder(values):
+	with Session(engine) as session:
+		print('vai')
+		print(values)
+
+		session.add(User(values))
+		session.commit()
+
+
+
+
+
+
+
+
+
+
+
+
+
 """
 Tabelas
 

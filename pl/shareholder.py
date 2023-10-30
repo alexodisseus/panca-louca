@@ -33,13 +33,9 @@ def create():
 
 	if request.method == 'POST':
 
-		params = request.args.to_dict()
 		post_params = request.form.to_dict()
-		all_params = {**params, **post_params}
 		
-		print('aqui')
-		print(all_params)
-		
+		model.create_shareholder(post_params)
 
 		return redirect(url_for('admin.index'))
 
