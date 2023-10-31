@@ -88,12 +88,18 @@ SQLModel.metadata.create_all(engine)
 
 
 
-def create_shareholder(values):
+def create_shareholder(
+	name:str, 
+	email: str, 
+	cpf: str, 
+	birth: str, 
+	telephone: str, 
+	cell: str, 
+	
+	):
 	with Session(engine) as session:
-		print('vai')
-		print(values)
-
-		session.add(User(values))
+		
+		session.add(User(name=name, email=email, cpf=cpf, birth=birth, telephone=telephone, cell=cell, status = "ativo"))
 		session.commit()
 
 

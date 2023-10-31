@@ -32,10 +32,25 @@ def create():
 	"""
 
 	if request.method == 'POST':
+		nome = request.form.get('name')
+		email = request.form.get('email')
+		cpf = request.form.get('cpf')
+		birth = request.form.get('birth')
+		telephone = request.form.get('telephone')
+		cell = request.form.get('cell')
+		addresses = request.form.get('addresses')
+		accounts = request.form.get('accounts')
+		# Faça algo com os dados recebidos, por exemplo, imprima-os
+		print("Nome:", nome)
+		print("Email:", email)
+		print("CPF:", cpf)
+		print("Data de Nascimento:", birth)
+		print("Telefone:", telephone)
+		print("Celular:", cell)
+		print("Endereços:", addresses)
+		print("Contas:", accounts)
 
-		post_params = request.form.to_dict()
-		
-		model.create_shareholder(post_params)
+		model.create_shareholder(nome, email,cpf,birth,telephone, cell)
 
 		return redirect(url_for('admin.index'))
 
@@ -47,3 +62,4 @@ def create():
 
 def configure(app):
 	app.register_blueprint(shareholder)
+
