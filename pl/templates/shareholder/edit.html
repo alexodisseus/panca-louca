@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet"
+                  href="{{url_for('static', filename='index.css')}}">
+{% endblock %}
+{% block content %}
+
+{{data}}
+
+<div class="container">
+    <h2>Formulário Bootstra</h2>
+
+    <form action="{{url_for('shareholder.edit' , id = data.id)}}" method="POST">
+        <ul class="nav nav-tabs" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#personalTab">Dados Pessoais</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#addressTab">Endereços</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#accountTab">Contas</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active " id="personalTab">
+                <br>
+                <div class="form-group ">
+                    <label for="name">Nome:</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{data.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{data.email}}">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" class="form-control" id="cpf" name="cpf" value="{{data.cpf}}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="birth">Data de Nascimento:</label>
+                        <input type="text" class="form-control" id="birth" name="birth" value="{{data.birth}}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="telephone">Telefone:</label>
+                        <input type="text" class="form-control" id="telephone" name="telephone" value="{{data.telephone}}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cell">Celular:</label>
+                        <input type="text" class="form-control" id="cell" name="cell" value="{{data.cell}}">
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="addressTab">
+                <br>
+                <div class="form-group">
+                    <label for="addresses">Endereço 1:</label>
+                    <input type="text" class="form-control" id="addresses" name="addresses" >
+                </div>
+                
+            </div>
+            <div class="tab-pane" id="accountTab">
+                <br>
+                <div class="form-group">
+                    <label for="accounts">Conta 1:</label>
+                    <input type="text" class="form-control" id="accounts" name="accounts">
+                </div>
+                
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+{% endblock %}

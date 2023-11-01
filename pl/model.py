@@ -101,7 +101,78 @@ def create_shareholder(
 		
 		session.add(User(name=name, email=email, cpf=cpf, birth=birth, telephone=telephone, cell=cell, status = "ativo"))
 		session.commit()
+def update_shareholder(
+	name:str, 
+	email: str, 
+	cpf: str, 
+	birth: str, 
+	telephone: str, 
+	cell: str, 
+	id
+	
+	):
+	with Session(engine) as session:
+		
+		user = session.get(User, id)
+		if name:
+			user.name = name
+		if email:
+			user.email = email
+		if cpf:
+			user.cpf = cpf
+		if birth:
+			user.birth = birth
+		if telephone:
+			user.telephone = telephone
+		if cell:
+			user.cell = cell
+		session.commit()
+		
 
+
+def list_users_shareholder(filters:str ):
+	with Session(engine) as session:
+		query = select(User)
+
+		data = session.exec(query).all()
+		return data
+
+def view_user_shareholder(id:str):
+	with Session(engine) as session:
+		query = select(User)
+		query = query.where(User.id == id )
+
+		data = session.exec(query).first()
+		return data
+
+"""
+
+def read_norm_list(description:str=None , tags:str=None, page:str = None):
+	with Session(engine) as session:	
+		query= select(
+			Norm_iten_sub,
+			Norm_iten.title,
+			Norm_iten.iten,
+			).join(Norm_iten)
+
+		if description:
+			query = query.where( Norm_iten_sub.description.contains(description))
+		if tags and tags != []:
+			
+			query = query.where( or_(Norm_iten_sub.tag == x for x in tags))
+		
+		if page:
+			index = 10
+			query = query.offset(page).limit(index)
+
+		else:
+			index = 10
+			query = query.limit(index)
+
+			
+
+		data = session.exec(query).all()
+"""
 
 
 

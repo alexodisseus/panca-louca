@@ -19,10 +19,11 @@ def index():
 		return redirect(url_for('admin.login'))
 
 	"""
+	filters = ''
+	data = model.list_users_shareholder(filters)
 
-	#data = model.read_tasks(session['userid'])
 	
-	return render_template('shareholder/index.html' )
+	return render_template('shareholder/index.html' , data=data)
 	#return render_template('login.html' )
 
 
@@ -48,23 +49,52 @@ def create():
 	
 		model.create_shareholder(nome, email,cpf,birth,telephone, cell)
 
-		return redirect(url_for('admin.index'))
+		return redirect(url_for('shareholder.index'))
 
 	
 	return render_template('shareholder/create.html' )
 	
 
 @shareholder.route('/view/<id>', methods = ['GET','POST'])
-def view(id = 0):
+def view(id):
 	"""
 	if 'username' not in session:
 		return redirect(url_for('admin.login'))
 
 	"""
 
-	#data = model.read_tasks(session['userid'])
+	data = model.view_user_shareholder(id)
 	
-	return render_template('shareholder/view.html' )
+	return render_template('shareholder/view.html', data=data)
+	
+
+@shareholder.route('/edit/<id>', methods = ['GET','POST'])
+
+def edit(id):
+	"""
+	if 'username' not in session:
+		return redirect(url_for('admin.login'))
+
+	"""
+
+	if request.method == 'POST':
+		nome = request.form.get('name')
+		email = request.form.get('email')
+		cpf = request.form.get('cpf')
+		birth = request.form.get('birth')
+		telephone = request.form.get('telephone')
+		cell = request.form.get('cell')
+		addresses = request.form.get('addresses')
+		accounts = request.form.get('accounts')
+		print(id)
+	
+		model.update_shareholder(nome, email,cpf,birth,telephone, cell, id)
+
+		return redirect(url_for('shareholder.view' , id = id))
+
+	data = model.view_user_shareholder(id)
+	
+	return render_template('shareholder/edit.html' , data=data )
 	#return render_template('login.html' )
 
 def configure(app):

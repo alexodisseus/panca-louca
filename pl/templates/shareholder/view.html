@@ -15,14 +15,18 @@
             </div>
             <div class="col-md-8">
                 <div class="d-flex align-items-center">
-                    <h2>Alex</h2>
-                    <button class="btn btn-link ml-3">Editar</button>
+                    <h2>{{data.name}}</h2>
+                    <a href="{{url_for('shareholder.edit',id = data.id)}}">
+                        
+                        <button  class="btn btn-link ml-3">Editar</button>
+                    </a>
                 </div>
-                <p>CPF: 123.123.123-43</p>
-                <p>Email: alex@gmaol</p>
-                <p>Data de Nascimento: 12/12/12</p>
-                <p>Telefone: 4040-4040</p>
-                <p>CEP: 94040-4040</p>
+                       
+                <p>CPF: {{data.cpf}}</p>
+                <p>Email: {{data.email}}</p>
+                <p>Data de Nascimento: {{data.birth}}</p>
+                <p>Telefone: {{data.telephone}}</p>
+                <p>CEP: {{data.cell}}</p>
             </div>
         </div>
 
