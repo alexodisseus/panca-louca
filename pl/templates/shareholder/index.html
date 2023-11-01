@@ -7,9 +7,30 @@
                   href="{{url_for('static', filename='index.css')}}">
 {% endblock %}
 {% block content %}
-
-<div class="container">
-    <h2>listando cotistas</h2>
-    
+<div class="container mt-5">
+    <h1>Lista de Perfis</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone</th>
+                <th>CEP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Alex</strong> </td>
+                <td>123.123.123-43</td>
+                <td>alex@gmaol</td>
+                <td>12/12/12</td>
+                <td>4040-4040</td>
+                <td>94040-4040</td>
+            </tr>
+            <!-- Adicione mais linhas com dados de outros perfis aqui -->
+        </tbody>
+    </table>
 </div>
 {% endblock %}
