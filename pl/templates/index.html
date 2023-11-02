@@ -10,75 +10,183 @@
 
 <div class="container">
     <h2>Formulário Bootstrap</h2>
-    <form>
-        <ul class="nav nav-tabs" id="myTabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#personalTab">Dados Pessoais</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#addressTab">Endereços</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#accountTab">Contas</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="personalTab">
-                <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" class="form-control" id="name" name="name">
+    
+</div>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Painel de Controle</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Relatórios</h5>
+                    <p class="card-text">Total de relatórios: 50</p>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" class="form-control" id="email" name="email">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="cpf">CPF:</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="birth">Data de Nascimento:</label>
-                        <input type="text" class="form-control" id="birth" name="birth">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="telephone">Telefone:</label>
-                        <input type="text" class="form-control" id="telephone" name="telephone">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="cell">Celular:</label>
-                        <input type="text" class="form-control" id="cell" name="cell">
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="addressTab">
-                <div class="form-group">
-                    <label for="addresses">Endereço 1:</label>
-                    <input type="text" class="form-control" id="addresses" name="addresses">
-                </div>
-                <div class="form-group">
-                    <label for="address2">Endereço 2:</label>
-                    <input type="text" class="form-control" id="address2" name="address2">
-                </div>
-            </div>
-            <div class="tab-pane" id="accountTab">
-                <div class="form-group">
-                    
-                    <label for="accounts">Conta 1:</label>
-                    <input type="text" class="form-control" id="accounts" name="accounts">
-                </div>
-                <div class="form-group">
-                    <label for="account2">Conta 2:</label>
-                    <input type="text" class="form-control" id="account2" name="account2">
-                </div>
-                <a href="{{url_for('shareholder.index')}}">
-                      sldnsdvlsnln
-                    </a>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Usuários</h5>
+                    <p class="card-text">Total de usuários: 100</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Títulos</h5>
+                    <p class="card-text">Total de títulos: 20</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tarefas</h5>
+                    <p class="card-text">Total de tarefas: 30</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- Incluir gráfico aqui (por exemplo, usando Chart.js) -->
+        </div>
+    </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Painel de Controle</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Relatórios (Últimos 4 meses)</h5>
+                    <p class="card-text">Relatório 1</p>
+                    <p class="card-text">Relatório 2</p>
+                    <p class="card-text">Relatório 3</p>
+                    <p class="card-text">Relatório 4</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Usuários (4 últimos usuários)</h5>
+                    <p class="card-text">Usuário 1</p>
+                    <p class="card-text">Usuário 2</p>
+                    <p class ="card-text">Usuário 3</p>
+                    <p class="card-text">Usuário 4</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Tarefas (Agenda)</h5>
+                    <p class="card-text">Tarefa 1 (Concluída)</p>
+                    <p class="card-text">Tarefa 2 (Em andamento)</p>
+                    <p class="card-text">Tarefa 3 (Pendente)</p>
+                    <p class="card-text">Tarefa 4 (Pendente)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <!-- Adicione um gráfico aqui (por exemplo, com Chart.js) -->
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Painel de Controle estilo Trello</title>
+    <style>
+        .card-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card {
+            flex: 0 0 calc(33.33% - 20px);
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Tarefas (Estilo Trello)</h1>
+    <div class="card-list">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title">Tarefa 1 (Pendente)</h5>
+                <p class="card-text">Descrição da tarefa 1.</p>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title">Tarefa 2 (Em Andamento)</h5>
+                <p class="card-text">Descrição da tarefa 2.</p>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title">Tarefa 3 (Concluída)</h5>
+                <p class="card-text">Descrição da tarefa 3.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
 {% endblock %}

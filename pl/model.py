@@ -98,9 +98,11 @@ def create_shareholder(
 	
 	):
 	with Session(engine) as session:
-		
 		session.add(User(name=name, email=email, cpf=cpf, birth=birth, telephone=telephone, cell=cell, status = "ativo"))
 		session.commit()
+
+
+
 def update_shareholder(
 	name:str, 
 	email: str, 
@@ -133,7 +135,10 @@ def update_shareholder(
 def list_users_shareholder(filters:str ):
 	with Session(engine) as session:
 		query = select(User)
+		if filters:
+			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
 
+		print(query)
 		data = session.exec(query).all()
 		return data
 

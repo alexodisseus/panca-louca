@@ -10,8 +10,24 @@
 
 
 <div class="container mt-5">
-    <h1>Lista de Perfis</h1>
+    <h1>Cotistas</h1>
     <div class="card table-responsive-md">
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <form action="./" method="GET">
+                        
+                        <div class="input-group">
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Buscar Nome, CPF, Matrícula, etc">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
         
         <table class="table  ">
             <thead>
@@ -57,4 +73,9 @@
 
     </div>
 </div>
+
+
+
 {% endblock %}
+
+

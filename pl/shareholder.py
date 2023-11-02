@@ -19,7 +19,10 @@ def index():
 		return redirect(url_for('admin.login'))
 
 	"""
-	filters = ''
+
+
+	filters = request.args.get('search')
+	
 	data = model.list_users_shareholder(filters)
 
 	
