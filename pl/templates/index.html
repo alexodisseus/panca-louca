@@ -5,146 +5,7 @@
     {{ bootstrap.load_css() }}
     <link rel="stylesheet"
                   href="{{url_for('static', filename='index.css')}}">
-{% endblock %}
-{% block content %}
-
-<div class="container">
-    <h2>Formulário Bootstrap</h2>
-    
-</div>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Painel de Controle</title>
-</head>
-<body>
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card bg-primary text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Relatórios</h5>
-                    <p class="card-text">Total de relatórios: 50</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-success text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Usuários</h5>
-                    <p class="card-text">Total de usuários: 100</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-warning text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Títulos</h5>
-                    <p class="card-text">Total de títulos: 20</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Tarefas</h5>
-                    <p class="card-text">Total de tarefas: 30</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <!-- Incluir gráfico aqui (por exemplo, usando Chart.js) -->
-        </div>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Painel de Controle</title>
-</head>
-<body>
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card bg-primary text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Relatórios (Últimos 4 meses)</h5>
-                    <p class="card-text">Relatório 1</p>
-                    <p class="card-text">Relatório 2</p>
-                    <p class="card-text">Relatório 3</p>
-                    <p class="card-text">Relatório 4</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-success text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Usuários (4 últimos usuários)</h5>
-                    <p class="card-text">Usuário 1</p>
-                    <p class="card-text">Usuário 2</p>
-                    <p class ="card-text">Usuário 3</p>
-                    <p class="card-text">Usuário 4</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-warning text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Tarefas (Agenda)</h5>
-                    <p class="card-text">Tarefa 1 (Concluída)</p>
-                    <p class="card-text">Tarefa 2 (Em andamento)</p>
-                    <p class="card-text">Tarefa 3 (Pendente)</p>
-                    <p class="card-text">Tarefa 4 (Pendente)</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <!-- Adicione um gráfico aqui (por exemplo, com Chart.js) -->
-        </div>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Painel de Controle estilo Trello</title>
-    <style>
+                  <style>
         .card-list {
             display: flex;
             flex-wrap: wrap;
@@ -154,39 +15,119 @@
             margin: 10px;
         }
     </style>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>Painel de controle</h2>
+    
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Informações de Títulos</title>
 </head>
 <body>
-
-<div class="container mt-5">
-    <h1>Tarefas (Estilo Trello)</h1>
-    <div class="card-list">
-        <div class="card bg-light">
-            <div class="card-body">
-                <h5 class="card-title">Tarefa 1 (Pendente)</h5>
-                <p class="card-text">Descrição da tarefa 1.</p>
-            </div>
-        </div>
-        <div class="card bg-light">
-            <div class="card-body">
-                <h5 class="card-title">Tarefa 2 (Em Andamento)</h5>
-                <p class="card-text">Descrição da tarefa 2.</p>
-            </div>
-        </div>
-        <div class="card bg-light">
-            <div class="card-body">
-                <h5 class="card-title">Tarefa 3 (Concluída)</h5>
-                <p class="card-text">Descrição da tarefa 3.</p>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Informações de Títulos</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        Agosto 
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Total de Títulos: <span class="badge badge-primary">10</span></li>
+                                            <li class="list-group-item">Valores Pagos: <span class="badge badge-primary">R$ 102,00</span></li>
+                                            <li class="list-group-item">Número de Cotistas: <span class="badge badge-primary">5</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        Setembro
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Total de Títulos: <span class="badge badge-primary">15</span></li>
+                                            <li class="list-group-item">Valores Pagos: <span class="badge badge-primary">R$ 120,00</span></li>
+                                            <li class="list-group-item">Número de Cotistas: <span class="badge badge-primary">8</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        Outubro
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Total de Títulos: <span class="badge badge-primary">8</span></li>
+                                            <li class="list-group-item">Valores Pagos: <span class="badge badge-primary">R$ 100,00</span></li>
+                                            <li class="list-group-item">Número de Cotistas: <span class="badge badge-primary">4</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                            
+                        <h5 class="card-title">Tarefas</h5>
+                        <div class="card-list">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tarefa 1 
+                                        <span class="badge badge-danger">Pendente</span></h5>
+                                    <p class="card-text">Descrição da tarefa 1.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tarefa 1 
+                                        <span class="badge badge-warning">Andamento</span></h5>
+                                    <p class="card-text">Descrição da tarefa 2.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title"> 
+                                        <span class="badge badge-success">Concluido</span>
+                                    </h5>Nome</h5>
+                                    <p class="card-text">Descrição da tarefa 3.</p>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+                                    <hr>
+                                    <h5 class="card-title"> 
+                                        
+                                    </h5>Nome</h5>
+                                    <p class="card-text">Descrição da tarefa 3.</p>
+                                    <hr>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+
 
 
 {% endblock %}
