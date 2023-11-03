@@ -277,7 +277,6 @@ htmlcov/
 dist/
 build/
 
-rl/static/db.db
 
 *.db
 *.egg-info/

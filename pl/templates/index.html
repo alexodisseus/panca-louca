@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% block styles %}
     <!-- Bootstrap CSS -->
     {{ bootstrap.load_css() }}
@@ -22,15 +23,6 @@
     <h2>Painel de controle</h2>
     
 </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Informações de Títulos</title>
-</head>
-<body>
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
@@ -124,10 +116,63 @@
             </div>
         </div>
     </div>
-</body>
-</html>
 
 
 
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Relatórios e lembretes</h5>
+                    <div class="container mt-2">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Relatórios (Últimos 4 meses)</h5>
+                                        <p class="card-text">Relatório 1</p>
+                                        <p class="card-text">Relatório 2</p>
+                                        <p class="card-text">Relatório 3</p>
+                                        <p class="card-text">Relatório 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Usuários (4 últimos usuários)</h5>
+                                        <p class="card-text">Usuário 1</p>
+                                        <p class="card-text">Usuário 2</p>
+                                        <p class ="card-text">Usuário 3</p>
+                                        <p class="card-text">Usuário 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-warning text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tarefas (Agenda)</h5>
+                                        <p class="card-text">Tarefa 1 (Concluída)</p>
+                                        <p class="card-text">Tarefa 2 (Em andamento)</p>
+                                        <p class="card-text">Tarefa 3 (Pendente)</p>
+                                        <p class="card-text">Tarefa 4 (Pendente)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <!-- Adicione um gráfico aqui (por exemplo, com Chart.js) -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -138,7 +138,7 @@ def list_users_shareholder(filters:str ):
 		if filters:
 			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
 
-		print(query)
+		
 		data = session.exec(query).all()
 		return data
 
