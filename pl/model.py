@@ -147,10 +147,11 @@ def list_users_shareholder(filters:str ):
 
 def view_user_shareholder(id:str):
 	with Session(engine) as session:
-		query = select(User, Address)
+		query = select(User,Address).join(Address)
 		query = query.where(User.id == id )
 
 		data = session.exec(query).first()
+		print(data)
 		return data
 
 """
