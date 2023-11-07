@@ -48,6 +48,7 @@ class User(SQLModel, table=True):
 	telephone:str
 	cell:str
 	status:str
+	code:str
 	adresses:List['Address']=Relationship()
 	accounts:List['Account']=Relationship()
 	quotas:List['Quota']=Relationship()
@@ -57,6 +58,8 @@ class Address(SQLModel, table=True):
 	id: Optional[int] = Field(default=None, primary_key=True)
 	street:str
 	number:str 
+	city:str
+	state:str
 	cep:str
 	user_id: int = Field(foreign_key='user.id')
 
@@ -98,7 +101,7 @@ def create_shareholder(
 	
 	):
 	with Session(engine) as session:
-		session.add(User(name=name, email=email, cpf=cpf, birth=birth, telephone=telephone, cell=cell, status = "ativo"))
+		session.add(User(name=name, email=email, cpf=cpf, birth=birth, telephone=telephone, cell=cell, status = "ativo" , code = "123"))
 		session.commit()
 
 
@@ -144,7 +147,7 @@ def list_users_shareholder(filters:str ):
 
 def view_user_shareholder(id:str):
 	with Session(engine) as session:
-		query = select(User)
+		query = select(User, Address)
 		query = query.where(User.id == id )
 
 		data = session.exec(query).first()

@@ -15,18 +15,18 @@
             </div>
             <div class="col-md-8">
                 <div class="d-flex align-items-center">
-                    <h2>{{data.name}}</h2>
-                    <a href="{{url_for('shareholder.edit',id = data.id)}}">
+                    <h2>{{data.User.name}}</h2>
+                    <a href="{{url_for('shareholder.edit',id = data.User.id)}}">
                         
                         <button  class="btn btn-link ml-3">Editar</button>
                     </a>
                 </div>
                        
-                <p>CPF: {{data.cpf}}</p>
-                <p>Email: {{data.email}}</p>
-                <p>Data de Nascimento: {{data.birth}}</p>
-                <p>Telefone: {{data.telephone}}</p>
-                <p>Celular: {{data.cell}}</p>
+                <p>CPF: {{data.User.cpf}}</p>
+                <p>Email: {{data.User.email}}</p>
+                <p>Data de Nascimento: {{data.User.birth}}</p>
+                <p>Telefone: {{data.User.telephone}}</p>
+                <p>Celular: {{data.User.cell}}</p>
             </div>
         </div>
 
@@ -37,9 +37,9 @@
                 <h3>Endereço</h3>
             </div>
             <div class="col-md-8">
-                <p>Endereço: Rua da Amostra, 123</p>
-                <p>Cidade: Sua Cidade</p>
-                <p>CEP: 12345-678</p>
+                <p>Endereço: {{data.Address.street}} , {{data.Address.number}}</p>
+                <p>Cidade: {{data.Address.city}}, {{data.Address.state}}</p>
+                <p>CEP: {{data.Address.cep}}</p>
             </div>
         </div>
 
