@@ -16,7 +16,7 @@
     <form action="{{url_for('shareholder.edit' , id = data.User.id)}}" method="POST">
         <ul class="nav nav-tabs" id="myTabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#personalTab">Dados Pessoais</a>
+                <a class="nav-link active" data-toggle="tab" href="#personalTab">Dados Pessoais</a> 
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#addressTab">Endereços</a>
@@ -59,7 +59,7 @@
             </div>
             <div class="tab-pane" id="addressTab">
                 <br>
-                <form>
+                
                     <div class="form-row">
 
                         <div class="form-group col-md-9">
@@ -86,7 +86,7 @@
                         <label for="cep">CEP:</label>
                         <input type="text" class="form-control" id="cep" value="{{data.Address.cep}}" name="cep">
                     </div>
-                </form>
+                
 
 
 

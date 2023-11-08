@@ -22,7 +22,18 @@
                     </a>
                 </div>
                        
-                <p>CPF: {{data.User.cpf}}</p>
+                <p>CPF/CNPJ: 
+                {%if data.User.cpf|length <11:%}
+                         000.000.000-00
+                        {%endif%}
+                        {%if data.User.cpf|length ==11:%}
+                        {{ data.User.cpf[:3]}}.{{ data.User.cpf[3:6] }}.{{ data.User.cpf[6:9] }}-{{ data.User.cpf[9:] }}
+                        {%endif%}
+                        {%if data.User.cpf|length >11:%}
+                        {{data.User.cpf[:2]}}.{{data.User.cpf[2:5]}}.{{data.User.cpf[5:8]}}/{{data.User.cpf[8:12]}}-{{data.User.cpf[12:]}}
+                        {%endif%}
+
+            </p>
                 <p>Email: {{data.User.email}}</p>
                 <p>Data de Nascimento: {{data.User.birth}}</p>
                 <p>Telefone: {{data.User.telephone}}</p>

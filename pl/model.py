@@ -112,8 +112,13 @@ def update_shareholder(
 	cpf: str, 
 	birth: str, 
 	telephone: str, 
-	cell: str, 
-	id
+	cell: str,
+	street:str,
+	number:str,
+	city:str,
+	state:str,
+	cep:str,
+	id,
 	
 	):
 	with Session(engine) as session:
@@ -131,17 +136,34 @@ def update_shareholder(
 			user.telephone = telephone
 		if cell:
 			user.cell = cell
+		
+		address = session.get(Address, user.id)
+		if street:
+			address.street=street
+		if number:
+			address.number=number
+		if cep:
+			address.cep=cep
+		if city:
+			address.city=city
+		if state:
+			address.state=state
+
+
 		session.commit()
 		
 
 
-def list_users_shareholder(filters:str ):
+def list_users_shareholder(filters:str, page:str ):
 	with Session(engine) as session:
 		query = select(User)
 		if filters:
 			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
-
 		
+		index = 10
+		query = query.offset(page).limit(index)
+
+				
 		data = session.exec(query).all()
 		return data
 

@@ -22,8 +22,8 @@ def index():
 
 
 	filters = request.args.get('search')
-	
-	data = model.list_users_shareholder(filters)
+	page = 0
+	data = model.list_users_shareholder(filters, page)
 
 	
 	return render_template('shareholder/index.html' , data=data)
@@ -87,11 +87,16 @@ def edit(id):
 		birth = request.form.get('birth')
 		telephone = request.form.get('telephone')
 		cell = request.form.get('cell')
-		addresses = request.form.get('addresses')
+		street = request.form.get('street')
+		number = request.form.get('number')
+		city = request.form.get('city')
+		state = request.form.get('state')
+		cep = request.form.get('cep')
 		accounts = request.form.get('accounts')
 		print(id)
 	
-		model.update_shareholder(nome, email,cpf,birth,telephone, cell, id)
+		model.update_shareholder(nome, email,cpf,birth,telephone, cell, street, number, city, state, cep, id)
+
 
 		return redirect(url_for('shareholder.view' , id = id))
 
