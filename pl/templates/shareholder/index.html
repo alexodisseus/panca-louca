@@ -105,6 +105,22 @@
                 <a class="page-link" href="#">Próximo</a>
             </li>
         </ul>
+        <div class="pagination">
+        <!-- terminar o pagination -->
+        <span class="step-links">
+            {% if page > 1: %}
+                <a href="?page=1">primeira</a>
+                <a href="?page={{ page - 1 }}">anterior</a>
+            {% endif %}
+            <span class="current-page">
+                Página {{ page }}.
+            </span>
+            {% if data|length > page:%}
+                <a href="?page={{ page + 1 }}">próxima</a>
+                <a href="?page={{ page + 1 }}">última</a>
+            {% endif %}
+        </span>
+    </div>
 
 
     </div>

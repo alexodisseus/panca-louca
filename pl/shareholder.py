@@ -22,11 +22,13 @@ def index():
 
 
 	filters = request.args.get('search')
-	page = 0
-	data = model.list_users_shareholder(filters, page)
+	page = request.args.get('page', 1, type=int)
+	per_page = 10
+	offset = (page - 1) * per_page
+	data = model.list_users_shareholder(filters, offset, per_page )
 
 	
-	return render_template('shareholder/index.html' , data=data)
+	return render_template('shareholder/index.html' , data=data , page=page)
 	#return render_template('login.html' )
 
 

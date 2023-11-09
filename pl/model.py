@@ -154,14 +154,13 @@ def update_shareholder(
 		
 
 
-def list_users_shareholder(filters:str, page:str ):
+def list_users_shareholder(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
 		query = select(User)
 		if filters:
 			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
 		
-		index = 10
-		query = query.offset(page).limit(index)
+		query = query.offset(offset).limit(per_page)
 
 				
 		data = session.exec(query).all()
@@ -175,6 +174,49 @@ def view_user_shareholder(id:str):
 		data = session.exec(query).first()
 		print(data)
 		return data
+
+
+
+
+"""
+from sqlmodel import Field, Session, SQLModel, create_engine, select
+from sqlalchemy import create_engine as sa_create_engine
+from sqlalchemy.orm import sessionmaker
+from typing import List
+from flask import Flask, render_template, request
+
+# Defina o modelo SQLModel
+class Post(SQLModel, table=True):
+    id: int = Field(primary_key=True)
+    title: str
+    content: str
+
+# Crie uma instância do mecanismo SQLAlchemy e uma sessão
+engine = sa_create_engine('sqlite:///example.db')
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    page = request.args.get('page', 1, type=int)  # Obtenha o número da página da consulta de URL
+    per_page = 5  # Número de itens por página
+    offset = (page - 1) * per_page
+
+    with Session(engine) as session:
+        stmt = select(Post).offset(offset).limit(per_page)
+        posts = session.exec(stmt).all()
+
+    return render_template('index.html', posts=posts)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+"""
+
+
+
+
 
 """
 
