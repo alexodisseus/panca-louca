@@ -1,6 +1,6 @@
 import app
 import model
-
+import math
 
 from flask import Blueprint, render_template, current_app , request , session, redirect, url_for
 
@@ -25,10 +25,22 @@ def index():
 	page = request.args.get('page', 1, type=int)
 	per_page = 10
 	offset = (page - 1) * per_page
-	data = model.list_users_shareholder(filters, offset, per_page )
 
 	
-	return render_template('shareholder/index.html' , data=data , page=page)
+	data = model.list_users_shareholder(filters, offset, per_page )
+	
+	count = model.count_users_shareholder(filters, offset, per_page )
+
+	count = math.ceil(count/ per_page)
+	pagination =[
+	filters,
+	page,
+	offset,
+	per_page,
+	count
+	]
+	
+	return render_template('shareholder/index.html' , data=data , pagination = pagination)
 	#return render_template('login.html' )
 
 

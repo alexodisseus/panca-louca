@@ -7,8 +7,8 @@
                   href="{{url_for('static', filename='index.css')}}">
 {% endblock %}
 {% block content %}
-
-
+{{data}}
+{{pagination}}
 <div class="container mt-5">
     <h1>Cotistas</h1>
     <div class="card table-responsive-md">
@@ -89,37 +89,32 @@
             </tbody>
         </table>
         <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <span class="page-link">Anterior</span>
+            {% if pagination[1] > 1: %}
+            <li class="page-item ">
+                <a class="page-link" href="?page=1">primeira</a>
             </li>
+            <li class="page-item ">
+                <a class="page-link" href="?page={{ pagination[1] - 1 }}">anterior</a>
+            </li>
+            {% endif %}
+
+
             <li class="page-item active">
-                <span class="page-link">1</span>
+                <span class="page-link">{{ pagination[1] }}</span>
+            </li>
+            
+            {% if pagination[4] > pagination[1]:%}
+            <li class="page-item">
+                
+                <a class="page-link" href="?page={{ pagination[1] + 1 }}">próxima</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="#">2</a>
+
+                <a class="page-link" href="?page={{ pagination[4]  }}">última</a>
             </li>
-            <li class="page-item">
-                <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">Próximo</a>
-            </li>
+            {% endif %}
         </ul>
-        <div class="pagination">
-        <!-- terminar o pagination -->
-        <span class="step-links">
-            {% if page > 1: %}
-                <a href="?page=1">primeira</a>
-                <a href="?page={{ page - 1 }}">anterior</a>
-            {% endif %}
-            <span class="current-page">
-                Página {{ page }}.
-            </span>
-            {% if data|length > page:%}
-                <a href="?page={{ page + 1 }}">próxima</a>
-                <a href="?page={{ page + 1 }}">última</a>
-            {% endif %}
-        </span>
+       
     </div>
 
 
