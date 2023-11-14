@@ -77,7 +77,9 @@ class Quota(SQLModel, table=True):
 	"""docstring for Quota"""
 	id: Optional[int] = Field(default=None, primary_key=True)
 	code:str
+	status:str
 	date:str
+	old:str
 	grouping:str #para agrupar tipo 'z a b' 
 
 	user_id: int = Field(foreign_key='user.id')
@@ -168,9 +170,9 @@ def list_users_shareholder(filters:str, offset:str, per_page:str ):
 
 def list_quote(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
-		query = select(User)
+		query = select(Quota)
 		if filters:
-			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
+			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
 		
 		query = query.offset(offset).limit(per_page)
 
@@ -186,11 +188,15 @@ def count_users_shareholder(filters:str, offset:str, per_page:str ):
 		
 		data = session.exec(query).all()
 		return len(data)
+		
+		
+		
+		
 def count_quote(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
-		query = select(User)
+		query = select(Quota)
 		if filters:
-			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
+			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
 		
 		data = session.exec(query).all()
 		return len(data)

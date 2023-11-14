@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 <div class="container mt-5">
-    <h1>Cotistas</h1>
+    <h1>Cotas</h1>
     <div class="card table-responsive-md">
         <div class="container mt-4">
             <div class="row justify-content-center">
@@ -30,42 +30,27 @@
         <table class="table  ">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>CPF/CNPJ</th>
-                    <th>Email</th>
-                    <th>Data de Nascimento</th>
-                    <th>Telefone</th>
-                    <th>Celular</th>
+                    <th>code</th>
+                    <th>data</th>
+                    <th>grouping</th>
+                    <th>status </th>
+                    <th>old </th>
+                    
+                    
                 </tr>
             </thead>
             <tbody>
                 
 
             {%if data:%}
+            
                 {%for x in data:%}
                 <tr>
-                    <td>
-                        <a href="{{url_for('shareholder.view', id = x.id ) }}">
-                            
-                            <strong>{{x.name}}</strong> 
-                        </a>
-                    </td>
-                    <td>
-                        {%if x.cpf|length <11:%}
-                         000.000.000-00
-                        {%endif%}
-                        {%if x.cpf|length ==11:%}
-                        {{ x.cpf[:3]}}.{{ x.cpf[3:6] }}.{{ x.cpf[6:9] }}-{{ x.cpf[9:] }}
-                        {%endif%}
-                        {%if x.cpf|length >11:%}
-                        {{x.cpf[:2]}}.{{x.cpf[2:5]}}.{{x.cpf[5:8]}}/{{x.cpf[8:12]}}-{{x.cpf[12:]}}
-                        {%endif%}
-
-                    </td>
-                    <td>{{x.email}}</td>
-                    <td>{{x.birth}}</td>
-                    <td>{{x.telephone}}</td>
-                    <td>{{x.cell}}</td>
+                    <td>{{x.code}}</td>
+                    <td>{{x.date}}</td>
+                    <td>{{x.grouping}}</td>
+                    <td>{{x.status}}</td>
+                    <td>{{x.old}}</td>
                 </tr>
                     {%endfor%}
                 {%else:%}
@@ -89,11 +74,11 @@
         <ul class="pagination justify-content-center">
             {% if pagination[1] > 1: %}
             <li class="page-item ">
-                <a class="page-link" href="{{url_for('shareholder.index' , page=1 , search=pagination[0]) }}">primeira</a>
+                <a class="page-link" href="{{url_for('quote.index' , page=1 , search=pagination[0]) }}">primeira</a>
             </li>
             <li class="page-item ">
 
-                <a class="page-link" href="{{url_for('shareholder.index' , page = pagination[1] - 1 , search=pagination[0]) }}">anterior</a>
+                <a class="page-link" href="{{url_for('quote.index' , page = pagination[1] - 1 , search=pagination[0]) }}">anterior</a>
             </li>
             {% endif %}
 
@@ -105,11 +90,11 @@
             {% if pagination[4] > pagination[1]:%}
             <li class="page-item">
                 
-                <a class="page-link" href="{{url_for('shareholder.index' , page = pagination[1] + 1 , search=pagination[0]) }}">próxima</a>
+                <a class="page-link" href="{{url_for('quote.index' , page = pagination[1] + 1 , search=pagination[0]) }}">próxima</a>
             </li>
             <li class="page-item">
 
-                <a class="page-link" href="{{url_for('shareholder.index' , page = pagination[4] , search=pagination[0]) }}">última</a>
+                <a class="page-link" href="{{url_for('quote.index' , page = pagination[4] , search=pagination[0]) }}">última</a>
                 
             </li>
             {% endif %}
