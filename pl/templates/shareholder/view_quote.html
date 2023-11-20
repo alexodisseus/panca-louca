@@ -7,12 +7,16 @@
                   href="{{url_for('static', filename='index.css')}}">
 {% endblock %}
 {% block content %}
-{{data}}
+
 <div class="container mt-5">
-    <h2>Lista de Títulos fulano</h2>
+    <h2>Lista de Títulos:</h2>
+     <h5>{{data[1]}}</h5>
     <div class="card table-responsive-md">
         <div class="container mt-3">
           
+          <div class="alert alert-info mt-3">
+            <strong>Total de Títulos:</strong> [{{data[2]}}]
+          </div>
           
           <table class="table">
             <thead>
@@ -25,25 +29,35 @@
               </tr>
             </thead>
             <tbody>
-              <!-- Exemplo de linha na tabela (substitua com seus próprios dados) -->
-              <tr>
-                <td>001</td>
-                <td>2023-11-20</td>
-                <td>10</td>
-                <td>Pendente</td>
-                <td>S</td>
+            {% if data[0]:%}
+                {%for x in data[0]:%}
+                <tr>
+                <td>{{x.code}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.grouping}}</td>
+                <td>{{x.status}}</td>
+                <td>{{x.old}}</td>
               </tr>
-              <!-- Adicione mais linhas conforme necessário -->
+                {%endfor%}
+                {%else:%}
+                <tr>
+                <td></td>
+                <td></td>
+                <td>nao existem dados</td>
+                <td></td>
+                <td></td>
+              </tr>
+                
+                {%endif%}
+              
             </tbody>
           </table>
-
-          <!-- Total de Títulos -->
-          <div class="alert alert-info">
-            <strong>Total de Títulos:</strong> [Insira o total aqui]
           </div>
-        </div>
+          </div>
+          
+        
     
-    </div>
+    
         
        
        
@@ -53,12 +67,6 @@
     
 </div>
 
-<div class="container mt-5">
-    <div class="row">
-        
-
-        
-    </div>
 
 {% endblock %}
 

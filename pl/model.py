@@ -160,12 +160,15 @@ def list_users_shareholder(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
 		query = select(User)
 		if filters:
-			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
+			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters) ,User.code.contains(filters) ) )
 		
+		
+		
+
 		query = query.offset(offset).limit(per_page)
 
-				
 		data = session.exec(query).all()
+		print(data)
 		return data
 
 def list_quote(filters:str, offset:str, per_page:str ):
@@ -184,7 +187,7 @@ def count_users_shareholder(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
 		query = select(User)
 		if filters:
-			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters)) )
+			query = query.where( or_(User.name.contains(filters),User.cpf.contains(filters),User.code.contains(filters)) )
 		
 		data = session.exec(query).all()
 		return len(data)
@@ -207,15 +210,21 @@ def view_user_shareholder(id:str):
 		query = query.where(User.id == id )
 
 		data = session.exec(query).first()
-		print(data)
+		
 		return data
 
 def view_user_shareholder_quote(id:str):
 	with Session(engine) as session:
 		user = session.get(User, id)
 		
-		print(user.quotas)
-		return user.quotas
+		quote = [post for post in user.quotas if post.status == "T"]
+		q = sum([int(post.grouping) for post in user.quotas if post.status == "T"])
+		
+		
+		
+		return [quote,user.name , q]
+		
+
 
 
 

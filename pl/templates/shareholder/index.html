@@ -86,6 +86,8 @@
             
             </tbody>
         </table>
+        
+        {% if pagination[4] > 1: %}
         <ul class="pagination justify-content-center">
             {% if pagination[1] > 1: %}
             <li class="page-item ">
@@ -114,6 +116,8 @@
             </li>
             {% endif %}
         </ul>
+        {% endif %}
+
        
     </div>
 
