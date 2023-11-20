@@ -83,6 +83,19 @@ def view(id):
 	data = model.view_user_shareholder(id)
 	
 	return render_template('shareholder/view.html', data=data)
+
+
+@shareholder.route('/quote/<id>', methods = ['GET','POST'])
+def quote(id):
+	"""
+	if 'username' not in session:
+		return redirect(url_for('admin.login'))
+
+	"""
+
+	data = model.view_user_shareholder_quote(id)
+	
+	return render_template('shareholder/view_quote.html', data=data)
 	
 
 @shareholder.route('/edit/<id>', methods = ['GET','POST'])

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet"
+                  href="{{url_for('static', filename='index.css')}}">
+{% endblock %}
+{% block content %}
+{{data}}
+<div class="container mt-5">
+    <h2>Lista de Títulos fulano</h2>
+    <div class="card table-responsive-md">
+        <div class="container mt-3">
+          
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Data</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+                <th>Antigo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Exemplo de linha na tabela (substitua com seus próprios dados) -->
+              <tr>
+                <td>001</td>
+                <td>2023-11-20</td>
+                <td>10</td>
+                <td>Pendente</td>
+                <td>S</td>
+              </tr>
+              <!-- Adicione mais linhas conforme necessário -->
+            </tbody>
+          </table>
+
+          <!-- Total de Títulos -->
+          <div class="alert alert-info">
+            <strong>Total de Títulos:</strong> [Insira o total aqui]
+          </div>
+        </div>
+    
+    </div>
+        
+       
+       
+    </div>
+
+
+    
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        
+
+        
+    </div>
+
+{% endblock %}
+

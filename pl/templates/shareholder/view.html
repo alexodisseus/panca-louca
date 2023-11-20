@@ -16,6 +16,10 @@
             <div class="col-md-8">
                 <div class="d-flex align-items-center">
                     <h2>{{data.User.name}}</h2>
+                    <a href="{{url_for('shareholder.quote',id = data.User.id)}}">
+                        
+                        <button  class="btn btn-link ml-3">Títulos</button>
+                    </a>
                     <a href="{{url_for('shareholder.edit',id = data.User.id)}}">
                         
                         <button  class="btn btn-link ml-3">Editar</button>

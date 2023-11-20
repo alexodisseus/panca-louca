@@ -210,6 +210,15 @@ def view_user_shareholder(id:str):
 		print(data)
 		return data
 
+def view_user_shareholder_quote(id:str):
+	with Session(engine) as session:
+		user = session.get(User, id)
+		
+		print(user.quotas)
+		return user.quotas
+
+
+
 
 
 
