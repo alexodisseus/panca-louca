@@ -229,6 +229,26 @@ def view_user_shareholder_quote(id:str):
 
 
 
+def list_report(filters:str, offset:str, per_page:str ):
+	with Session(engine) as session:
+		query = select(Quota)
+		if filters:
+			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
+		
+		query = query.offset(offset).limit(per_page)
+
+				
+		data = session.exec(query).all()
+		return data
+
+def count_report(filters:str, offset:str, per_page:str ):
+	with Session(engine) as session:
+		query = select(Quota)
+		if filters:
+			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
+		
+		data = session.exec(query).all()
+		return len(data)
 
 
 """
