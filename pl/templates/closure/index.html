@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet"
+                  href="{{url_for('static', filename='index.css')}}">
+{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Fechamento as</h2>
+     
+    <div class="card table-responsive-md">
+        <div class="container mt-3">
+          
+          <div class="alert alert-info mt-3">
+            <strong>Total de Títulos:</strong> [{{data[2]}}]
+          </div>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Data</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+                <th>Antigo</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% if data[0]:%}
+                {%for x in data[0]:%}
+                <tr>
+                <td>{{x.code}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.grouping}}</td>
+                <td>{{x.status}}</td>
+                <td>{{x.old}}</td>
+              </tr>
+                {%endfor%}
+                {%else:%}
+                <tr>
+                <td></td>
+                <td></td>
+                <td>nao existem dados</td>
+                <td></td>
+                <td></td>
+              </tr>
+                
+                {%endif%}
+              
+            </tbody>
+          </table>
+          </div>
+          </div>
+          
+        
+    
+    
+        
+       
+       
+    </div>
+
+
+    
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Anúncios de Site de Compras</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Anúncios de Site de Compras</h2>
+
+    <div class="card-deck">
+        <!-- Ad 1 -->
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Data: 01/11/2023</h5>
+                        <p class="card-text">Valores Pagos: R$ 50,00</p>
+                        <p class="card-text">Valor do Título: R$ 100,00</p>
+                        <p class="card-text">Status: Pago</p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/800x600" class="card-img" alt="Produto 1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Ad 2 -->
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Data: 02/11/2023</h5>
+                        <p class="card-text">Valores Pagos: R$ 80,00</p>
+                        <p class="card-text">Valor do Título: R$ 120,00</p>
+                        <p class="card-text">Status: Pendente</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/800x600" class="card-img" alt="Produto 2">
+                </div>
+            </div>
+        </div>
+
+        <!-- Adicione mais anúncios conforme necessário -->
+
+    </div>
+</div>
+
+<!-- Adicione o script do Bootstrap e jQuery no final do corpo para otimizar o tempo de carregamento -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Anúncios de Site de Compras</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Anúncios de Site de Compras</h2>
+
+    <div class="card-deck">
+        <!-- Ad 1 -->
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/800x600" class="card-img" alt="Produto 1">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Data: 01/11/2023</h5>
+                        <p class="card-text">Valores Pagos: R$ 50,00</p>
+                        <p class="card-text">Valor do Título: R$ 100,00</p>
+                        <p class="card-text">Status: Pago</p>
+                        <a href="#" class="btn btn-primary">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ad 2 -->
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/800x600" class="card-img" alt="Produto 2">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Data: 02/11/2023</h5>
+                        <p class="card-text">Valores Pagos: R$ 80,00</p>
+                        <p class="card-text">Valor do Título: R$ 120,00</p>
+                        <p class="card-text">Status: Pendente</p>
+                        <a href="#" class="btn btn-primary">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adicione mais anúncios conforme necessário -->
+
+    </div>
+</div>
+
+<!-- Adicione o script do Bootstrap e jQuery no final do corpo para otimizar o tempo de carregamento -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+{% endblock %}
+

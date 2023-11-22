@@ -2,6 +2,7 @@ import admin
 import shareholder
 import quote
 import report
+import closure
 
 import model
 
@@ -21,6 +22,7 @@ admin.configure(app)
 shareholder.configure(app)
 quote.configure(app)
 report.configure(app)
+closure.configure(app)
 db.configure(app)
 
 Bootstrap4(app)

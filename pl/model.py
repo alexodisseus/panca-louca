@@ -251,6 +251,30 @@ def count_report(filters:str, offset:str, per_page:str ):
 		return len(data)
 
 
+
+
+def list_closure(filters:str, offset:str, per_page:str ):
+	with Session(engine) as session:
+		query = select(Quota)
+		if filters:
+			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
+		
+		query = query.offset(offset).limit(per_page)
+
+				
+		data = session.exec(query).all()
+		return data
+def count_closure(filters:str, offset:str, per_page:str ):
+	with Session(engine) as session:
+		query = select(Quota)
+		if filters:
+			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
+		
+		data = session.exec(query).all()
+		return len(data)
+
+
+
 """
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 from sqlalchemy import create_engine as sa_create_engine
