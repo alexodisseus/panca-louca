@@ -70,7 +70,7 @@ def list():
 	count
 	]
 	
-	return render_template('closure/index.html' , data=data , pagination = pagination)
+	return render_template('closure/list.html' , data=data , pagination = pagination)
 	#return render_template('login.html' )
 
 @closure.route('/create', methods = ['GET','POST'])

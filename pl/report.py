@@ -20,13 +20,16 @@ def index():
 
 	"""
 
-
 	filters = request.args.get('search')
 	page = request.args.get('page', 1, type=int)
 	per_page = 10
 	offset = (page - 1) * per_page
 
 	
+	pendentes =  model.list_closure_pending()
+	print("asd")
+	print(pendentes)
+
 	data = model.list_report(filters, offset, per_page )
 	
 	count = model.count_report(filters, offset, per_page )
@@ -40,33 +43,27 @@ def index():
 	count
 	]
 	
-	return render_template('report/index.html' , data=data , pagination = pagination)
+	return render_template('report/index.html' , 
+		data=data , 
+		pagination = pagination , 
+		pending = pendentes)
+	
 	#return render_template('login.html' )
 
-@report.route('/create', methods = ['GET','POST'])
-def create():
+
+
+@report.route('/edit/<id>', methods = ['GET','POST'])
+def edit(id):
 	"""
 	if 'username' not in session:
 		return redirect(url_for('admin.login'))
-
 	"""
 
-	if request.method == 'POST':
-		nome = request.form.get('name')
-		email = request.form.get('email')
-		cpf = request.form.get('cpf')
-		birth = request.form.get('birth')
-		telephone = request.form.get('telephone')
-		cell = request.form.get('cell')
-		addresses = request.form.get('addresses')
-		accounts = request.form.get('accounts')
-	
-		model.create_shareholder(nome, email,cpf,birth,telephone, cell)
+	print(id)
 
-		return redirect(url_for('shareholder.index'))
 
 	
-	return render_template('quote/create.html' )
+	return render_template('report/edit.html'  )
 	
 
 

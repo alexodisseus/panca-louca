@@ -92,6 +92,18 @@ class Closure(SQLModel, table=True):
 	date:str
 	status:str
 
+class ReportPayment(SQLModel, table=True):
+	"""docstring for repor payment"""
+	id: Optional[int] = Field(default=None, primary_key=True)
+	value:str
+	date:str
+	status:str
+	amount:str
+
+	user_id: int = Field(foreign_key='user.id')
+
+
+
 
 
 engine = create_engine('sqlite:///db.db')
@@ -294,6 +306,14 @@ def create_closure(
 		session.add(Closure(value=value, date=date, status = "pendente"))
 		session.commit()
 
+
+def list_closure_pending():
+	with Session(engine) as session:
+		query = select(Closure).where( Closure.status == "pendente" )
+		
+				
+		data = session.exec(query).all()
+		return data
 
 
 """

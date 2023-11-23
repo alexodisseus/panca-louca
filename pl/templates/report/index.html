@@ -8,27 +8,40 @@
 {% endblock %}
 {% block content %}
 
+
 <div class="container mt-5">
     <h2>Relatório de pagamento</h2>
      <h5>Últimos meses</h5>
     <div class="card table-responsive-md">
         <div class="container mt-3">
           
-          <div class="alert alert-info mt-3">
-            <strong>Total de Títulos:</strong> [{{data[2]}}]
-          </div>
-          
+         
           <table class="table">
             <thead>
               <tr>
-                <th>Código</th>
+                
                 <th>Data</th>
                 <th>Quantidade</th>
                 <th>Status</th>
-                <th>Antigo</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody>
+            {% if pending!=[]:%}
+                {%for x in pending:%}
+              <tr>
+                <td>
+                  <a href="{{url_for('report.edit' , id=x.id )}}">
+                    
+                  {{x.date}}
+                  </a>
+                </td>
+                <td> - </td>
+                <td>{{x.status}}</td>
+                <td> - </td>
+              </tr>
+                {%endfor%}    
+            {%endif%}
             {% if data[0]:%}
                 {%for x in data[0]:%}
                 <tr>
@@ -38,17 +51,8 @@
                 <td>{{x.status}}</td>
                 <td>{{x.old}}</td>
               </tr>
-                {%endfor%}
-                {%else:%}
-                <tr>
-                <td></td>
-                <td></td>
-                <td>nao existem dados</td>
-                <td></td>
-                <td></td>
-              </tr>
-                
-                {%endif%}
+                {%endfor%}    
+            {%endif%}
               
             </tbody>
           </table>
