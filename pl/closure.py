@@ -50,21 +50,15 @@ def create():
 	"""
 
 	if request.method == 'POST':
-		nome = request.form.get('name')
-		email = request.form.get('email')
-		cpf = request.form.get('cpf')
-		birth = request.form.get('birth')
-		telephone = request.form.get('telephone')
-		cell = request.form.get('cell')
-		addresses = request.form.get('addresses')
-		accounts = request.form.get('accounts')
-	
-		model.create_shareholder(nome, email,cpf,birth,telephone, cell)
+		date = request.form.get('data')
+		value = request.form.get('valorTitulo')
+		
+		model.create_closure(date, value)
 
-		return redirect(url_for('shareholder.index'))
+		return redirect(url_for('closure.index'))
 
 	
-	return render_template('quote/create.html' )
+	return render_template('closure/create.html' )
 	
 
 

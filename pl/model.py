@@ -85,6 +85,15 @@ class Quota(SQLModel, table=True):
 	user_id: int = Field(foreign_key='user.id')
 
 
+class Closure(SQLModel, table=True):
+	"""docstring for Closure"""
+	id: Optional[int] = Field(default=None, primary_key=True)
+	value:str
+	date:str
+	status:str
+
+
+
 engine = create_engine('sqlite:///db.db')
 
 SQLModel.metadata.create_all(engine)
@@ -255,7 +264,7 @@ def count_report(filters:str, offset:str, per_page:str ):
 
 def list_closure(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
-		query = select(Quota)
+		query = select(Closure)
 		if filters:
 			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
 		
@@ -264,6 +273,8 @@ def list_closure(filters:str, offset:str, per_page:str ):
 				
 		data = session.exec(query).all()
 		return data
+
+
 def count_closure(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
 		query = select(Quota)
@@ -272,6 +283,16 @@ def count_closure(filters:str, offset:str, per_page:str ):
 		
 		data = session.exec(query).all()
 		return len(data)
+
+
+def create_closure(
+	date: str, 
+	value:str, 
+	
+	):
+	with Session(engine) as session:
+		session.add(Closure(value=value, date=date, status = "pendente"))
+		session.commit()
 
 
 
