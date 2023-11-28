@@ -26,10 +26,6 @@ def index():
 	offset = (page - 1) * per_page
 
 	
-	pendentes =  model.list_closure_pending()
-	print("asd")
-	print(pendentes)
-
 	data = model.list_report(filters, offset, per_page )
 	
 	count = model.count_report(filters, offset, per_page )
@@ -43,6 +39,8 @@ def index():
 	count
 	]
 	
+	pendentes =  model.list_closure_pending()
+
 	return render_template('report/index.html' , 
 		data=data , 
 		pagination = pagination , 
@@ -59,9 +57,10 @@ def edit(id):
 		return redirect(url_for('admin.login'))
 	"""
 
-	print(id)
+	asd = model.create_report_pay_check(id)
 
-
+	if asd:
+		model.create_report_pay_auto(id)
 	
 	return render_template('report/edit.html'  )
 	

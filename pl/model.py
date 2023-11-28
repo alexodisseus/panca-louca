@@ -101,6 +101,7 @@ class ReportPayment(SQLModel, table=True):
 	amount:str
 
 	user_id: int = Field(foreign_key='user.id')
+	closure_id: int = Field(foreign_key='closure.id')
 
 class Titulo(SQLModel, table=True):
 	"""docstring for titulos, exportar para quotes"""
@@ -327,6 +328,32 @@ def list_closure_pending():
 				
 		data = session.exec(query).all()
 		return data
+
+
+
+def create_report_pay_check(id):
+	with Session(engine) as session:
+		query = select(ReportPayment).where( ReportPayment.closure_id == id )
+		data = session.exec(query).first()
+		if data:
+			return None
+		else:
+			return True
+
+		
+def create_report_pay_auto(id):
+	with Session(engine) as session:
+		#buscar todos os titulos e gravar no pagamento como pendente
+
+
+		query = select(ReportPayment).where( ReportPayment.closure_id == id )
+		data = session.exec(query).first()
+		
+		
+		return data
+
+
+
 
 
 """
