@@ -21,6 +21,7 @@ def index():
 	"""
 
 
+
 	filters = request.args.get('search')
 	page = request.args.get('page', 1, type=int)
 	per_page = 10

@@ -102,6 +102,19 @@ class ReportPayment(SQLModel, table=True):
 
 	user_id: int = Field(foreign_key='user.id')
 
+class Titulo(SQLModel, table=True):
+	"""docstring for titulos, exportar para quotes"""
+	
+	id: Optional[int] = Field(default=None, primary_key=True)
+	numero:str
+	situação:str
+	cotista:str
+	cotas:str
+	data_aquis:str
+	mes_transf:str
+	ano_transf:str
+	cotista2:str
+
 
 
 
@@ -238,12 +251,11 @@ def view_user_shareholder_quote(id:str):
 	with Session(engine) as session:
 		user = session.get(User, id)
 		
-		quote = [post for post in user.quotas if post.status == "T"]
-		q = sum([int(post.grouping) for post in user.quotas if post.status == "T"])
-		
-		
-		
-		return [quote,user.name , q]
+		query = select(Titulo).where(Titulo.cotista== user.code)
+		title = session.exec(query).all()
+		 
+		#contagem
+		return [title,user]
 		
 
 
