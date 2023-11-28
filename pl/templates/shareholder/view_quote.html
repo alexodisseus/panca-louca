@@ -10,7 +10,7 @@
 {{data}}
 <div class="container mt-5">
     <h2>Lista de Títulos:</h2>
-     <h5>{{data[1]}}</h5>
+     <h5>{{data[1].name}}</h5>
     <div class="card table-responsive-md">
         <div class="container mt-3">
           
@@ -30,16 +30,16 @@
             </thead>
             <tbody>
             {% if data[0]:%}
-                {%for x in data[0]:%}
+              {%for x in data[0]  :%}
                 <tr>
-                <td>{{x.code}}</td>
-                <td>{{x.date}}</td>
-                <td>{{x.grouping}}</td>
-                <td>{{x.status}}</td>
-                <td>{{x.old}}</td>
+                <td>{{x.numero}}</td>
+                <td>{{x.data_aquis}}</td>
+                <td>{{x.cotas}}</td>
+                <td>{{x.situação}}</td>
+                <td>{{x.cotista2}}</td>
               </tr>
-                {%endfor%}
-                {%else:%}
+              {%endfor%}
+            {%else:%}
                 <tr>
                 <td></td>
                 <td></td>
@@ -48,7 +48,7 @@
                 <td></td>
               </tr>
                 
-                {%endif%}
+            {%endif%}
               
             </tbody>
           </table>

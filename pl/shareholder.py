@@ -96,6 +96,8 @@ def quote(id):
 
 	data = model.view_user_shareholder_quote(id)
 	
+	
+
 	return render_template('shareholder/view_quote.html', data=data)
 	
 

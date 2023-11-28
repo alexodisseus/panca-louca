@@ -240,7 +240,7 @@ def count_quote(filters:str, offset:str, per_page:str ):
 
 def view_user_shareholder(id:str):
 	with Session(engine) as session:
-		query = select(User,Address).join(Address)
+		query = select(User,Address,Account).join(Address).join(Account)
 		query = query.where(User.id == id )
 
 		data = session.exec(query).first()
@@ -251,11 +251,12 @@ def view_user_shareholder_quote(id:str):
 	with Session(engine) as session:
 		user = session.get(User, id)
 		
-		query = select(Titulo).where(Titulo.cotista== user.code)
+		query = select(Titulo).where(Titulo.cotista== user.code , Titulo.situação == "A")
 		title = session.exec(query).all()
-		 
-		#contagem
-		return [title,user]
+
+		contagem = [x.cotas for x in title]
+		q = sum([int(post) for post in contagem])
+		return [title,user , q]
 		
 
 
