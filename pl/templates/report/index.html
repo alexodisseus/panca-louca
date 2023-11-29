@@ -7,7 +7,7 @@
                   href="{{url_for('static', filename='index.css')}}">
 {% endblock %}
 {% block content %}
-
+{{pending}}
 <div class="container mt-5">
     <h2>Relatório de pagamento</h2>
      <h5>Últimos meses</h5>
@@ -33,7 +33,7 @@
                 {%for x in pending:%}
               <tr>
                 <td>
-                  <a href="{{url_for('report.edit' , id=x.id )}}">
+                  <a href="{{url_for('report.view' , id=x.id )}}">
                     
                   {{x.date}}
                   </a>

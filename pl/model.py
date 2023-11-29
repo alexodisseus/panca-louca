@@ -108,7 +108,7 @@ class Titulo(SQLModel, table=True):
 	
 	id: Optional[int] = Field(default=None, primary_key=True)
 	numero:str
-	situação:str
+	situacao:str
 	cotista:str
 	cotas:str
 	data_aquis:str
@@ -252,7 +252,7 @@ def view_user_shareholder_quote(id:str):
 	with Session(engine) as session:
 		user = session.get(User, id)
 		
-		query = select(Titulo).where(Titulo.cotista== user.code , Titulo.situação == "A")
+		query = select(Titulo).where(Titulo.cotista== user.code , Titulo.situacao == "A")
 		title = session.exec(query).all()
 
 		contagem = [x.cotas for x in title]
@@ -275,6 +275,12 @@ def list_report(filters:str, offset:str, per_page:str ):
 				
 		data = session.exec(query).all()
 		return data
+def list_report_id(id):
+	with Session(engine) as session:
+		query= select(ReportPayment).where(ReportPayment.closure_id == id)
+		data = session.exec(query).all()
+
+	
 
 def count_report(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
@@ -345,9 +351,8 @@ def create_report_pay_auto(id):
 	with Session(engine) as session:
 		#buscar todos os titulos e gravar no pagamento como pendente
 
-
-		query = select(ReportPayment).where( ReportPayment.closure_id == id )
-		data = session.exec(query).first()
+		query = select(Titulo).where(Titulo.situacao == "T")
+		data = session.exec(query).all()
 		
 		
 		return data

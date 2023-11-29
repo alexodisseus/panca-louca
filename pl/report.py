@@ -57,13 +57,34 @@ def edit(id):
 		return redirect(url_for('admin.login'))
 	"""
 
+	#buscar dados relatorios
+	return render_template('report/edit.html'  )
+
+
+
+
+@report.route('/view/<id>', methods = ['GET','POST'])
+def view(id):
+	"""
+	if 'username' not in session:
+		return redirect(url_for('admin.login'))
+	"""
+
 	asd = model.create_report_pay_check(id)
 
 	if asd:
-		model.create_report_pay_auto(id)
+		relatorio = model.create_report_pay_auto(id)
+
+		print("relatorio")
+		print(relatorio)
 	
-	return render_template('report/edit.html'  )
+	data = model.list_report_id(id)
 	
+
+
+	return render_template('report/view.html' , data = data  , id=id)
+	
+
 
 
 def configure(app):
