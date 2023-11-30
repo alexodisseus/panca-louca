@@ -74,8 +74,10 @@ def view(id):
 
 	if asd:
 		relatorio = model.create_report_pay_auto(id)
+		pendentes =  model.list_closure_pending(id)
 
-		model.save_report(relatorio , 4)
+
+		model.save_report(relatorio , pendentes)
 
 	
 	data = model.list_report_id(id)

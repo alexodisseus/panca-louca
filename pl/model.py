@@ -53,6 +53,7 @@ class User(SQLModel, table=True):
 	accounts:List['Account']=Relationship()
 	quotas:List['Quota']=Relationship()
 
+
 class Address(SQLModel, table=True):
 	"""docstring for Address"""
 	id: Optional[int] = Field(default=None, primary_key=True)
@@ -275,8 +276,8 @@ def view_user_shareholder_quote(id:str):
 		q = sum([int(post) for post in contagem])
 		return [title,user , q]
 		
-		
-		
+
+"""
 def view_user_shareholder_quote2(id:str):
 	with Session(engine) as session:
 		user = session.get(User, id)
@@ -289,7 +290,7 @@ def view_user_shareholder_quote2(id:str):
 		return [title,user , q]
 		
 
-
+"""
 
 
 
@@ -356,9 +357,12 @@ def create_closure(
 		session.commit()
 
 
-def list_closure_pending():
+def list_closure_pending(id=None):
 	with Session(engine) as session:
 		query = select(Closure).where( Closure.status == "pendente" )
+		if id:
+		    query = query.where(
+		        Closure.id == id)
 		
 				
 		data = session.exec(query).all()
@@ -381,8 +385,9 @@ def create_report_pay_auto(id):
 		#buscar todos os titulos e gravar no pagamento como pendente
 
 		query = select(
-			User , 
-			func.sum(Quota.grouping)
+			User,
+			func.sum(Quota.grouping),
+			
 			).join(
 			Quota
 			).group_by(User.name).having(func.sum(Quota.grouping) > 0)
@@ -392,8 +397,29 @@ def create_report_pay_auto(id):
 
 def save_report(data, fechamento):
 	with Session(engine) as session:
-		asd = 0
-
+		"""
+		print(fechamento)
+		print(data[0])
+		print(data[0][1])
+		"""
+		
+		for x in data:
+		    a = ReportPayment()
+		    a.value=fechamento[0].value
+		    a.date=fechamento[0].date
+		    a.status="pendente"
+		    a.amount=x[1]
+		    a.user_id=x[0].id
+		    a.closure_id=fechamento[0].id
+		    
+		    print(a)
+		    print(x)
+		    
+		    
+		    session.add(a)
+		    session.commit()
+		    
+		
 
 
 def populqte():
