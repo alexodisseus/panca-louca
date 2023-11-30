@@ -27,7 +27,7 @@ def index():
 	offset = (page - 1) * per_page
 
 	
-	data = model.list_quote(filters, offset, per_page )
+	data = model.list_quote_all(filters, offset, per_page )
 	
 	count = model.count_quote(filters, offset, per_page )
 

@@ -218,6 +218,21 @@ def list_quote(filters:str, offset:str, per_page:str ):
 		data = session.exec(query).all()
 		return data
 
+
+
+
+def list_quote_all(filters:str, offset:str, per_page:str ):
+	with Session(engine) as session:
+		query = select(Quota)
+		if filters:
+			query = query.where( or_(Quota.code.contains(filters),Quota.old.contains(filters)) )
+		
+		query = query.offset(offset).limit(per_page)
+
+				
+		data = session.exec(query).all()
+		return data
+
 def count_users_shareholder(filters:str, offset:str, per_page:str ):
 	with Session(engine) as session:
 		query = select(User)
@@ -248,7 +263,21 @@ def view_user_shareholder(id:str):
 		
 		return data
 
+
 def view_user_shareholder_quote(id:str):
+	with Session(engine) as session:
+		user = session.get(User, id)
+		
+		
+		title = user.quotas
+		
+		contagem = [x.grouping for x in title]
+		q = sum([int(post) for post in contagem])
+		return [title,user , q]
+		
+		
+		
+def view_user_shareholder_quote2(id:str):
 	with Session(engine) as session:
 		user = session.get(User, id)
 		
@@ -351,15 +380,37 @@ def create_report_pay_auto(id):
 	with Session(engine) as session:
 		#buscar todos os titulos e gravar no pagamento como pendente
 
-		query = select(Titulo).where(Titulo.situacao == "T")
-		data = session.exec(query).all()
+		query = select(
+			User , 
+			func.sum(Quota.grouping)
+			).join(
+			Quota
+			).where(User.name.contains("andrea")).group_by(User.name)
+		data =session.exec(query).all()
 		
 		
 		return data
 
+def populqte():
+    with Session(engine) as session:
+        query = select(User)
+        data = session.exec(query).all()
+        return data
+
+def titi(code):
+    with Session(engine) as session:
+        query = select(Titulo).where(
+            Titulo.cotista==code,
+            Titulo.situacao=="A")
+        data = session.exec(query).all()
+        return data
 
 
-
+def save(data):
+    with Session(engine) as session:
+        session.add(data)
+        session.commit()
+        
 
 """
 from sqlmodel import Field, Session, SQLModel, create_engine, select

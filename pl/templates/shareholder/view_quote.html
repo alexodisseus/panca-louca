@@ -7,7 +7,7 @@
                   href="{{url_for('static', filename='index.css')}}">
 {% endblock %}
 {% block content %}
-{{data}}
+
 <div class="container mt-5">
     <h2>Lista de Títulos:</h2>
      <h5>{{data[1].name}}</h5>
@@ -32,11 +32,11 @@
             {% if data[0]:%}
               {%for x in data[0]  :%}
                 <tr>
-                <td>{{x.numero}}</td>
-                <td>{{x.data_aquis}}</td>
-                <td>{{x.cotas}}</td>
-                <td>{{x.situação}}</td>
-                <td>{{x.cotista2}}</td>
+                <td>{{x.code}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.grouping}}</td>
+                <td>{{x.status}}</td>
+                <td>{{x.old}}</td>
               </tr>
               {%endfor%}
             {%else:%}

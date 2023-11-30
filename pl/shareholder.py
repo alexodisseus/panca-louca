@@ -86,6 +86,9 @@ def view(id):
 	return render_template('shareholder/view.html', data=data)
 
 
+
+
+
 @shareholder.route('/quote/<id>', methods = ['GET','POST'])
 def quote(id):
 	"""
