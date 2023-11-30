@@ -75,12 +75,13 @@ def view(id):
 	if asd:
 		relatorio = model.create_report_pay_auto(id)
 
+		model.save_report(relatorio , 4)
+
 	
 	data = model.list_report_id(id)
-	
 
 
-	return render_template('report/view.html' , data = relatorio  , id=id)
+	return render_template('report/view.html' , data = data  , id=id)
 	
 
 

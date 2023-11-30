@@ -385,11 +385,16 @@ def create_report_pay_auto(id):
 			func.sum(Quota.grouping)
 			).join(
 			Quota
-			).where(User.name.contains("andrea")).group_by(User.name)
+			).group_by(User.name).having(func.sum(Quota.grouping) > 0)
 		data =session.exec(query).all()
-		
-		
+
 		return data
+
+def save_report(data, fechamento):
+	with Session(engine) as session:
+		asd = 0
+
+
 
 def populqte():
     with Session(engine) as session:
